@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Chat application</string>
+    <string name="n_a">N/A</string>
+    <string name="please_wait">Please wait…</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="no_internet">No Network Connection</string>
+</resources>
