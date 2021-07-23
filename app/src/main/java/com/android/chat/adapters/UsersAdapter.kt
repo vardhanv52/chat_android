@@ -34,6 +34,9 @@ class UsersAdapter(
         holder.title.text = item.name
         holder.mobile.text = "+${item.countryCode ?: 91} - ${item.mobile}"
         holder.email.text = item.email
+
+        if(holder.adapterPosition == users.size - 1)
+            actions?.loadMoreItems()
     }
 
     override fun getItemCount(): Int {

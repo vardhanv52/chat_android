@@ -30,6 +30,7 @@ class UsersActivity : AppCompatActivity() {
     private var pageNo = 1
     private var pageSize = 10
     private var isEndReached = false
+    private var isLoading = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +44,9 @@ class UsersActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.Main).launch {
             try {
                 Helper.displayProgressBar(context)
+                isLoading = true
                 val resp = APIManager.getUsers(pageNo++, pageSize, search)
+                isLoading = false
                 Helper.dismissProgressBar()
                 if (resp.getBoolean("status")) {
                     val records = Gson().fromJson<ArrayList<UserDTO>>(
@@ -106,6 +109,11 @@ class UsersActivity : AppCompatActivity() {
                 val intent = Intent(context, AddUpdateUserActivity::class.java)
                 intent.putExtra("user", users[pos])
                 startActivityForResult(intent, updateRequestCode)
+            }
+
+            override fun loadMoreItems() {
+                if(!isEndReached && !isLoading)
+                    getUserRecords()
             }
         })
         users_rv?.adapter = adapter

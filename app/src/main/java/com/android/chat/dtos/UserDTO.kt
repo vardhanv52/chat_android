@@ -14,6 +14,9 @@ class UserDTO() : Serializable {
     var mobile: String? = null
     var role: String? = null
 
+    @SerializedName("is_active")
+    var isActive: Boolean? = null
+
     @SerializedName("inserted_at")
     var insertedAt: Long? = null
 }

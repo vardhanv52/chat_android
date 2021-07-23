@@ -85,5 +85,5 @@
         <item name="android:textStyle">normal</item>
         <item name="android:textSize">16sp</item>
     </style>
-    
+
 </resources>

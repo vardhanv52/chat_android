@@ -1,9 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AddUpdateUserActivity">
+    android:background="@color/secondaryColor">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:padding="5dp"
+            android:src="@drawable/arrow_back"
+            app:layout_constraintBottom_toBottomOf="@id/title_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/title_tv"
+            app:tint="@color/white" />
+
+        <TextView
+            android:id="@+id/title_tv"
+            style="@style/text_bold_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:text="@string/add_user"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@id/back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/name_et"
+            style="@style/text_regular_14"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            android:background="@null"
+            android:elevation="5dp"
+            android:hint="@string/name"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textCursorDrawable="@drawable/text_cursor_drawable"
+            app:layout_constraintTop_toBottomOf="@id/title_tv" />
+
+        <EditText
+            android:id="@+id/email_et"
+            style="@style/text_regular_14"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@null"
+            android:elevation="5dp"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textCursorDrawable="@drawable/text_cursor_drawable"
+            app:layout_constraintTop_toBottomOf="@id/name_et" />
+
+        <EditText
+            android:id="@+id/mobile_et"
+            style="@style/text_regular_14"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@null"
+            android:elevation="5dp"
+            android:hint="@string/mobile"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textCursorDrawable="@drawable/text_cursor_drawable"
+            app:layout_constraintTop_toBottomOf="@id/email_et" />
+
+        <EditText
+            android:id="@+id/pwd_et"
+            style="@style/text_regular_14"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@null"
+            android:elevation="5dp"
+            android:hint="@string/password"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textCursorDrawable="@drawable/text_cursor_drawable"
+            app:layout_constraintTop_toBottomOf="@id/mobile_et" />
+
+        <Spinner
+            android:id="@+id/roles_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@null"
+            android:elevation="5dp"
+            android:entries="@array/array_roles"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            app:layout_constraintTop_toBottomOf="@id/pwd_et" />
+
+        <TextView
+            android:id="@+id/status_tv"
+            style="@style/text_medium_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/account_status"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/roles_spinner"
+            app:layout_constraintTop_toBottomOf="@id/roles_spinner" />
+
+        <RadioGroup
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:id="@+id/rg"
+            app:layout_constraintEnd_toEndOf="@id/roles_spinner"
+            app:layout_constraintStart_toStartOf="@id/roles_spinner"
+            app:layout_constraintTop_toBottomOf="@id/status_tv">
+
+            <RadioButton
+                android:id="@+id/rb_enable"
+                style="@style/text_regular_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/enable"
+                android:checked="true"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_marginStart="20dp"
+                android:buttonTint="@color/white"
+                android:textColor="@color/white" />
+
+            <RadioButton
+                android:id="@+id/rb_disable"
+                style="@style/text_regular_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:buttonTint="@color/white"
+                android:text="@string/disable"
+                android:textColor="@color/white" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/submit"
+            style="@style/btn_style"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/primaryColor"
+            android:text="@string/submit"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rg"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
