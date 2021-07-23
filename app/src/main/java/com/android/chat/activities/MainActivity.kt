@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.chat.R
 import com.android.chat.utils.Constants
 import com.android.chat.utils.Helper
@@ -27,11 +28,15 @@ class MainActivity : AppCompatActivity() {
         else
             users_icon?.visibility = View.GONE
         search_bar?.background = ResourceUtil.getSolidRectDrawable(5, R.color.white)
+        groups_rv?.layoutManager = LinearLayoutManager(context)
     }
 
     private fun setListeners() {
         users_icon?.setOnClickListener {
             startActivity(Intent(context, UsersActivity::class.java))
+        }
+        add_group?.setOnClickListener {
+            startActivity(Intent(context, AddGroupActivity::class.java))
         }
     }
 }

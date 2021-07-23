@@ -29,6 +29,8 @@ class UsersAdapter(
         val item = users[holder.adapterPosition]
         if (holder.adapterPosition % 2 == 0)
             holder.parent.setBackgroundColor(ContextCompat.getColor(context, R.color.light_white))
+        else
+            holder.parent.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
         holder.image.background = ResourceUtil.getSolidRectDrawable(50, R.color.secondaryColor)
         holder.image.text = Helper.getInitials(item.name!!)
         holder.title.text = item.name

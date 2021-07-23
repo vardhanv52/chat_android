@@ -39,4 +39,6 @@
     <string name="check_mobile">Check mobile number once</string>
     <string name="check_password">Check password once</string>
     <string name="check_role">Please select a role</string>
+    <string name="add_group">Add Group</string>
+    <string name="members">Members</string>
 </resources>

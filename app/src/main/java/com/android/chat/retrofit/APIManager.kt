@@ -76,9 +76,10 @@ object APIManager {
         }
     }
 
-    suspend fun createGroup(name: String): JSONObject {
-        val map = HashMap<String, String>()
+    suspend fun createGroup(name: String, members: ArrayList<String>): JSONObject {
+        val map = HashMap<String, Any>()
         map["name"] = name
+        map["members"] = members
         return withContext(Dispatchers.IO) {
             val resp = api?.createGroup(Helper.getHeaderAuthorization(), map)?.execute()
             return@withContext if (resp?.isSuccessful == true)

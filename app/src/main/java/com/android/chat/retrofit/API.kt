@@ -31,7 +31,7 @@ interface API {
 
     @POST("api/chat/group")
     fun createGroup(
-        @Header("Authorization") token: String, @Body map: HashMap<String, String>
+        @Header("Authorization") token: String, @Body map: HashMap<String, Any>
     ): Call<ResponseBody>
 
     @PATCH("api/user")

@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChatApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.AddUpdateUserActivity"></activity>
+        <activity android:name=".activities.AddGroupActivity"></activity>
+        <activity android:name=".activities.AddUpdateUserActivity" />
         <activity android:name=".activities.UsersActivity" />
         <activity
             android:name=".activities.LoginActivity"

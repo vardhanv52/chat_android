@@ -16,6 +16,7 @@ class UserDTO() : Serializable {
 
     @SerializedName("is_active")
     var isActive: Boolean? = null
+    var isSelected = false
 
     @SerializedName("inserted_at")
     var insertedAt: Long? = null
