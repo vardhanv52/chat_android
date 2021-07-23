@@ -94,9 +94,7 @@ object Helper {
     }
 
     fun getHeaderAuthorization(): String {
-        return "Bearer ${
-            PreferenceManager.getUserSharedPreferences()?.getString(Constants.keyToken, "")
-        }"
+        return "Bearer ${PreferenceManager.getUserStringData(Constants.keyToken)}"
     }
 
     fun displayProgressBar(context: Context) {
@@ -143,45 +141,14 @@ object Helper {
         }
     }
 
-    fun generateCircularBitmap(
-        context: Context, circleColor: String, diameterDP: Float,
-        text: String?, textSizeValue: Double
-    ): Bitmap? {
-        val textColor = ContextCompat.getColor(context, R.color.btn_color)
-        val metrics: DisplayMetrics = Resources.getSystem().displayMetrics
-        val diameterPixels = diameterDP * (metrics.densityDpi / 160f)
-        val radiusPixels = diameterPixels / 2
-        // Create the bitmap
-        val output = Bitmap.createBitmap(
-            diameterPixels.toInt(), diameterPixels.toInt(),
-            Bitmap.Config.ARGB_8888
-        )
-        // Create the canvas to draw on
-        val canvas = Canvas(output)
-        canvas.drawARGB(0, 0, 0, 0)
-        // Draw the circle
-        val paintC = Paint()
-        paintC.isAntiAlias = true
-        paintC.color = Color.parseColor(circleColor)
-        canvas.drawCircle(radiusPixels, radiusPixels, radiusPixels, paintC)
-        // Draw the text
-        if (text != null && text.isNotEmpty()) {
-            val paintT = Paint()
-            paintT.color = textColor
-            paintT.isAntiAlias = true
-            paintT.textSize = radiusPixels * textSizeValue.toFloat()
-            val typeFace =
-                ResourcesCompat.getFont(context, R.font.now_medium)
-            paintT.typeface = typeFace
-            val textBounds = Rect()
-            paintT.getTextBounds(text, 0, text.length, textBounds)
-            canvas.drawText(
-                text,
-                radiusPixels - textBounds.exactCenterX(),
-                radiusPixels - textBounds.exactCenterY(),
-                paintT
-            )
+    fun getInitials(str: String): String {
+        var result = ""
+        str.split(" ").forEach {
+            result += it[0]
         }
-        return output
+        return if (result.length > 2)
+            result.substring(0, 2)
+        else
+            result
     }
 }

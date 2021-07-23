@@ -1,9 +1,21 @@
 <resources>
-    <string name="app_name">Chat application</string>
+    <string name="app_name">Chat App</string>
     <string name="n_a">N/A</string>
     <string name="please_wait">Please wait…</string>
     <string name="confirmation">Confirmation</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="no_internet">No Network Connection</string>
+    <string name="account_login">Account Login</string>
+    <string name="email">Email address</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="email_empty">Email address is Empty</string>
+    <string name="password_empty">Password is Empty</string>
+    <string name="email_invalid">Email is not valid</string>
+    <string name="went_wrong">Something went wrong. Please try again!!!</string>
+    <string name="groups">Groups</string>
+    <string name="search_here">Search here - Hit enter at the end</string>
+    <string name="users">Users</string>
+    <string name="end_reached">End reached…</string>
 </resources>

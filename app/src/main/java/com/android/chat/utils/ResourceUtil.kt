@@ -23,4 +23,12 @@ object ResourceUtil {
         return bg
     }
 
+    fun getHollowStrokeDrawable(radius: Int, strokeColor: Int): GradientDrawable {
+        val bg = GradientDrawable()
+        bg.shape = GradientDrawable.RECTANGLE
+        bg.cornerRadius = Helper.dpToPx(radius).toFloat()
+        bg.setStroke(Helper.dpToPx(1), ContextCompat.getColor(context, strokeColor))
+        return bg
+    }
+
 }

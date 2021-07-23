@@ -1,6 +1,7 @@
-package com.cbayt.xchange.interfaces
+package com.android.chat.interfaces
 
 interface IListActions {
     fun loadMoreItems()
     fun onItemClicked(pos: Int)
+    fun onEditClicked(pos: Int)
 }

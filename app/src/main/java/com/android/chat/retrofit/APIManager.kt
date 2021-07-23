@@ -15,9 +15,11 @@ object APIManager {
         map["fcm_token"] = "sample-token"
         return withContext(Dispatchers.IO) {
             val resp = api?.login(map)?.execute()
-            return@withContext if (resp?.isSuccessful == true)
-                JSONObject(resp.body()!!.string())
-            else
+            return@withContext if (resp?.isSuccessful == true) {
+                val json = JSONObject(resp.body()!!.string())
+                json.put("token", resp.headers()["token"])
+                json
+            } else
                 JSONObject(resp?.errorBody()!!.string())
         }
     }
@@ -62,9 +64,11 @@ object APIManager {
         }
     }
 
-    suspend fun getUsers(pageNo: Int, size: Int): JSONObject {
+    suspend fun getUsers(pageNo: Int, size: Int, query: String): JSONObject {
+        val map = HashMap<String, String>()
+        map["search"] = query
         return withContext(Dispatchers.IO) {
-            val resp = api?.getUsers(Helper.getHeaderAuthorization(), pageNo, size)?.execute()
+            val resp = api?.getUsers(Helper.getHeaderAuthorization(), pageNo, size, map)?.execute()
             return@withContext if (resp?.isSuccessful == true)
                 JSONObject(resp.body()!!.string())
             else

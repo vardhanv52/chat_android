@@ -26,7 +26,7 @@ interface API {
     @GET("api/user/all/{page}/{size}")
     fun getUsers(
         @Header("Authorization") token: String, @Path("page") page: Int,
-        @Path("size") size: Int
+        @Path("size") size: Int, @QueryMap map: HashMap<String, String>
     ): Call<ResponseBody>
 
     @POST("api/chat/group")
