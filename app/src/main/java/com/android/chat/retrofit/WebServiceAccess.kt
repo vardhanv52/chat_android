@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit
 
 class WebServiceAccess {
     private var apiURL = "http://15.207.143.29:3000/"
+    // private var apiURL = "http://192.168.43.101:3000/"
     private var httpClient: OkHttpClient.Builder? = null
 
     init {

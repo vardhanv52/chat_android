@@ -3,24 +3,21 @@ package com.android.chat.utils
 import android.app.Dialog
 import android.app.ProgressDialog
 import android.content.Context
-import android.content.res.Resources
-import android.graphics.*
+import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
-import android.util.DisplayMetrics
 import android.util.Log
 import android.util.Patterns
 import android.view.WindowManager
 import android.widget.Toast
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import com.android.chat.R
 import com.android.chat.dtos.UserDTO
 import com.android.chat.interfaces.IDialogActions
+import com.android.chat.managers.PreferenceManager
 import com.android.chat.utils.Chat.Companion.context
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.dialog_confirmation.*
@@ -148,6 +145,8 @@ object Helper {
         }
         return if (result.length > 2)
             result.substring(0, 2)
+        else if (result.length == 1 && str.length >= 2)
+            str.substring(0, 2)
         else
             result
     }

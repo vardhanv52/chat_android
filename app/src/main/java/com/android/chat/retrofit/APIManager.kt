@@ -166,9 +166,10 @@ object APIManager {
         }
     }
 
-    suspend fun like(id: String): JSONObject {
-        val map = HashMap<String, String>()
+    suspend fun like(id: String, status: Boolean): JSONObject {
+        val map = HashMap<String, Any>()
         map["message_id"] = id
+        map["status"] = status
         return withContext(Dispatchers.IO) {
             val resp = api?.likeMessage(Helper.getHeaderAuthorization(), map)?.execute()
             return@withContext if (resp?.isSuccessful == true)

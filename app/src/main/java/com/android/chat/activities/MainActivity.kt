@@ -13,6 +13,7 @@ import com.android.chat.R
 import com.android.chat.adapters.GroupsAdapter
 import com.android.chat.dtos.GroupDTO
 import com.android.chat.dtos.UserDTO
+import com.android.chat.managers.PreferenceManager
 import com.android.chat.retrofit.APIManager
 import com.android.chat.utils.Constants
 import com.android.chat.utils.Helper
@@ -32,6 +33,8 @@ class MainActivity : AppCompatActivity() {
     private val groups = ArrayList<GroupDTO>()
     private var adapter: GroupsAdapter? = null
     private var search = ""
+    private val addGroupRequestCode = 789
+    private val addGroupResponseCode = 790
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,6 +84,10 @@ class MainActivity : AppCompatActivity() {
             }
         })
         groups_rv?.adapter = adapter
+        val user = Helper.getUserDTO()
+        name?.text = "${user?.name} - ${user?.role}"
+        email?.text = user?.email
+        logout?.background = ResourceUtil.getSolidRectDrawable(5, R.color.primaryColor)
     }
 
     private fun setListeners() {
@@ -88,7 +95,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(context, UsersActivity::class.java))
         }
         add_group?.setOnClickListener {
-            startActivity(Intent(context, AddGroupActivity::class.java))
+            startActivityForResult(Intent(context, AddGroupActivity::class.java), addGroupRequestCode)
         }
         search_bar?.setOnEditorActionListener { v, actionId, event ->
             if (event != null && event.keyCode == KeyEvent.KEYCODE_ENTER ||
@@ -99,5 +106,19 @@ class MainActivity : AppCompatActivity() {
             }
             return@setOnEditorActionListener true
         }
+        logout?.setOnClickListener {
+            PreferenceManager.clearUserPreferences()
+            startActivity(Intent(context, LoginActivity::class.java))
+            Helper.showToast(context, "Logged out successfully")
+            finish()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if(requestCode == addGroupRequestCode && resultCode == addGroupResponseCode) {
+            search = ""
+            getGroupRecords()
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }

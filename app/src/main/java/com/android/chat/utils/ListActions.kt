@@ -8,4 +8,6 @@ abstract class ListActions : IListActions {
     override fun onItemClicked(pos: Int) {}
 
     override fun onEditClicked(pos: Int) {}
+
+    override fun onLikeClicked(pos: Int) {}
 }

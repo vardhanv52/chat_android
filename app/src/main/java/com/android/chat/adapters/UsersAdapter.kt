@@ -33,7 +33,7 @@ class UsersAdapter(
             holder.parent.setBackgroundColor(ContextCompat.getColor(context, R.color.white))
         holder.image.background = ResourceUtil.getSolidRectDrawable(50, R.color.secondaryColor)
         holder.image.text = Helper.getInitials(item.name!!)
-        holder.title.text = item.name
+        holder.title.text = "${item.name} - ${item.role}"
         holder.mobile.text = "+${item.countryCode ?: 91} - ${item.mobile}"
         holder.email.text = item.email
 

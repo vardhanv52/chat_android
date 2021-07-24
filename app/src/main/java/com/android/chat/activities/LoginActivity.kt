@@ -8,7 +8,7 @@ import com.android.chat.R
 import com.android.chat.retrofit.APIManager
 import com.android.chat.utils.Constants
 import com.android.chat.utils.Helper
-import com.android.chat.utils.PreferenceManager
+import com.android.chat.managers.PreferenceManager
 import com.android.chat.utils.ResourceUtil
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.coroutines.CoroutineScope

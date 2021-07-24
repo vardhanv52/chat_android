@@ -15,4 +15,5 @@
     <color name="accentColor">#36599b</color>
     <color name="grey_color">#707070</color>
     <color name="light_white">#e2e2e2</color>
+    <color name="light_blue">#dbe8ff</color>
 </resources>

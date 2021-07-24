@@ -67,7 +67,7 @@ interface API {
 
     @PATCH("api/chat/messages/like")
     fun likeMessage(
-        @Header("Authorization") token: String, @Body map: HashMap<String, String>
+        @Header("Authorization") token: String, @Body map: HashMap<String, Any>
     ): Call<ResponseBody>
 
     @GET("api/chat/messages")

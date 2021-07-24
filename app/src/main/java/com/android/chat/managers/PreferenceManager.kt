@@ -1,4 +1,4 @@
-package com.android.chat.utils
+package com.android.chat.managers
 
 import android.content.Context
 import android.content.SharedPreferences

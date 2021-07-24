@@ -5,25 +5,62 @@
     android:layout_height="match_parent">
 
     <View
-        android:layout_width="wrap_content"
-        android:layout_height="180dp"
         android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="220dp"
         android:background="@color/secondaryColor"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/name"
+        style="@style/text_medium_16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User name"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/title"
+        app:layout_constraintBottom_toTopOf="@id/email" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log out"
+        android:id="@+id/logout"
+        style="@style/btn_style_12"
+        android:textColor="@color/white"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/primaryColor"
+        app:layout_constraintTop_toTopOf="@id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/email"/>
+
+    <TextView
+        android:id="@+id/email"
+        style="@style/text_regular_14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="vardhanv52@gmail.com"
+        android:textColor="@color/white"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintStart_toStartOf="@id/title"
+        app:layout_constraintBottom_toTopOf="@id/title" />
+
+    <TextView
+        android:id="@+id/title"
         style="@style/text_bold_24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/groups"
-        android:id="@+id/title"
-        android:textColor="@color/white"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/search_bar"/>
+        android:layout_marginBottom="20dp"
+        android:text="@string/groups"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/search_bar"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/search_bar"
@@ -42,34 +79,34 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
+        android:id="@+id/users_icon"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/group"
-        android:id="@+id/users_icon"
-        app:tint="@color/white"
         android:layout_marginEnd="20dp"
+        android:src="@drawable/group"
+        app:layout_constraintBottom_toBottomOf="@id/title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/title"
-        app:layout_constraintBottom_toBottomOf="@id/title"/>
+        app:tint="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/groups_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/groups_rv"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/view"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        app:fabSize="mini"
         android:src="@drawable/add_circle"
-        app:tint="@color/white"
-        android:id="@+id/add_group"
         app:backgroundTint="@color/secondaryColor"
+        app:fabSize="mini"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

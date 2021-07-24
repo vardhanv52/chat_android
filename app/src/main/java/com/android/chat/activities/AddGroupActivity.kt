@@ -21,6 +21,8 @@ class AddGroupActivity : AppCompatActivity() {
     private val context: Context = this
     private val members = ArrayList<UserDTO>()
     private var adapter: MembersAdapter? = null
+    private var isUpdated = false
+    private val responseCode = 790
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,6 +64,9 @@ class AddGroupActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
+        back?.setOnClickListener {
+            super.onBackPressed()
+        }
         submit?.setOnClickListener {
             val name = name_et?.text.toString().trim()
             if(name.isEmpty()) {
@@ -84,6 +89,7 @@ class AddGroupActivity : AppCompatActivity() {
                             it.isSelected = false
                         }
                         adapter?.notifyDataSetChanged()
+                        isUpdated = true
                     }
                     Helper.showToast(context, resp.getString("message"))
                 } catch (ex: Exception) {
@@ -93,5 +99,11 @@ class AddGroupActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        if(isUpdated)
+            setResult(responseCode)
+        super.onBackPressed()
     }
 }
